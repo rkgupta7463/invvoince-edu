@@ -76,7 +76,7 @@ class CourseDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 #List and Create View
-class EnrolledCourseUserListCreateView(generics.ListCreateAPIView):
+class EnrolledCourseUserListCreateView(generics.ListAPIView):
     queryset = EnrolledCourseUser.objects.all()
     serializer_class = EnrolledCourseUserSerializer
     permission_classes = [IsAuthenticated]
