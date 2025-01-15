@@ -11,7 +11,7 @@ urlpatterns = [
     path("",Home.as_view()),
     path('api-auth/', include('rest_framework.urls')),
     path('login/', obtain_auth_token, name='login'),
-    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('token/verify/', TokenVerifyView.as_view(), name='token_verify'),
     path('logout/', logout_user, name='logout'),
