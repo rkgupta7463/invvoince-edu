@@ -61,11 +61,15 @@ class CourseListCreateView(generics.ListCreateAPIView):
     permission_classes = [IsOwnerOrReadOnly] 
 
 
+
 class CourseDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Course.objects.all()
     serializer_class = CourseSerializer
     permission_classes = [IsOwnerOrReadOnly]
 
+    def perform_create(self, serializer):
+        # Automatically set the owner of the course to the current user
+        serializer.save(owner=self.request.user)
 
 
 # # Retrieve, Update, and Delete View
@@ -80,6 +84,7 @@ class EnrolledCourseUserListCreateView(generics.ListAPIView):
     queryset = EnrolledCourseUser.objects.all()
     serializer_class = EnrolledCourseUserSerializer
     permission_classes = [IsAuthenticated]
+
 
 
 class EnrollUserInCourseView(generics.CreateAPIView):

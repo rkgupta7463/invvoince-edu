@@ -90,6 +90,8 @@ class Course(models.Model):
     def __str__(self):
         return self.title
 
+
+
 class EnrolledCourseUser(models.Model):
     # Many-to-many relationship between users and courses
     enrolled_users = models.ManyToManyField(
